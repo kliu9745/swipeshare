@@ -250,7 +250,6 @@ export const TransferView = ({ onTransfer = null, currentUser = null, onMatchSel
     }
   };
 
-  
 
   // Prepare offer data for matching
   const prepareOfferData = () => {
