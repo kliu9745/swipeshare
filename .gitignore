@@ -1,0 +1,23 @@
+# Node
+client/node_modules/
+client/.env
+client/dist/
+client/build/
+
+# Python
+server/env/
+server/__pycache__/
+server/.pytest_cache/
+
+# Mac
+.DS_Store
+
+# Logs
+*.log
+
+# VSCode
+.vscode/
+
+swipeshare_app/ 
+
+my_env/
