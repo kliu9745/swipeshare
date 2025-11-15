@@ -61,20 +61,45 @@ import TransferView from './views/TransferView';
 import InboxView from './views/InboxView';
 import MySwipesView from './views/MySwipesView';
 import ProfileView from './views/ProfileView';
+// Services for managing transfers and user stats
+import transferService from './services/swipe/transferService';
+import userService from './services/user/userService';
 // import { mockMySwipes, mockIncomingSwipes } from './data/mockData';
 import './App.css';
 
 const SwipeShareApp = () => {
   const [currentView, setCurrentView] = useState('home');
+  // eslint-disable-next-line no-unused-vars
   const [incomingSwipes, setIncomingSwipes] = useState([...mockIncomingSwipes]); // Make mutable
+  const [mySwipes, setMySwipes] = useState([...mockMySwipes]); // Make mutable for active transfers
 
   // Frontend mock data (replace with API calls in production)
-  const mySwipes = mockMySwipes;
   const currentUser = mockUsers.currentUser;
 
   const handleNavigate = (view) => setCurrentView(view);
   const handleProfileClick = () => setCurrentView('profile');
   const handleLogout = () => console.log('User logged out');
+
+  // Handle swipe actions (cancel, use, view-qr, etc.)
+  const handleSwipeAction = (action, swipeId) => {
+    switch (action) {
+      case 'cancel':
+        // Remove from mySwipes
+        setMySwipes(prev => prev.filter(s => s.id !== swipeId));
+        console.log(`✅ Transfer cancelled: ${swipeId}`);
+        break;
+      case 'use':
+        // Mark as used in incomingSwipes
+        // Would update status to COMPLETED in real app
+        console.log(`✅ Swipe marked as used: ${swipeId}`);
+        break;
+      case 'view-qr':
+        console.log(`📱 View QR code: ${swipeId}`);
+        break;
+      default:
+        break;
+    }
+  };
 
   // --- Dev-only test data initialization ---
   useEffect(() => {
@@ -101,15 +126,60 @@ const SwipeShareApp = () => {
 
       {/* Main Content */}
       <div className="app-content">
-        {currentView === 'home' && <HomeView onNavigate={handleNavigate} mySwipes={mySwipes} />}
+        {currentView === 'home' && <HomeView onNavigate={handleNavigate} mySwipes={mySwipes} onSwipeAction={handleSwipeAction} />}
         {currentView === 'transfer' && <TransferView onTransfer={null} currentUser={currentUser} onMatchSelected={(match) => {
-          // Add match to incoming swipes
-          setIncomingSwipes(prev => [...prev, match]);
-          // Navigate to inbox
-          setCurrentView('inbox');
+          // Create actual transfer in service
+          const recipientId = match.recipientId || match.userId;
+          const recipientName = match.recipient || match.name;
+          
+          const transfer = transferService.createTransfer({
+            donorId: currentUser.id,
+            donor: currentUser.name,
+            recipientId: recipientId,
+            recipient: recipientName,
+            quantity: match.quantity,
+            code: match.code,
+            validUntil: match.validUntil,
+            location: match.location,
+            message: match.message,
+            status: 'ACTIVE'
+          });
+
+          // Update donor stats (increment swipesShared)
+          const donor = userService.getUserById(currentUser.id);
+          if (donor) {
+            donor.stats.swipesShared = (donor.stats.swipesShared || 0) + match.quantity;
+            console.log(`✅ Updated ${donor.name}'s swipesShared to ${donor.stats.swipesShared}`);
+          }
+
+          // Update recipient stats (increment swipesReceived and mealsGiven)
+          const recipient = userService.getUserById(recipientId);
+          if (recipient) {
+            recipient.stats.swipesReceived = (recipient.stats.swipesReceived || 0) + match.quantity;
+            recipient.stats.mealsGiven = (recipient.stats.mealsGiven || 0) + match.quantity;
+            console.log(`✅ Updated ${recipient.name}'s swipesReceived to ${recipient.stats.swipesReceived} and mealsGiven to ${recipient.stats.mealsGiven}`);
+          }
+
+          // Add transfer to mySwipes (active transfers) - map match to transfer format
+          const newSwipe = {
+            id: transfer.id,
+            donorId: currentUser.id,
+            recipientId: match.recipientId || match.userId,
+            recipient: match.recipient || match.name,
+            status: 'pending',
+            validUntil: match.validUntil,
+            location: match.location || 'Any dining hall',
+            createdAt: new Date().toLocaleString(),
+            expiresAt: match.expiresAt || new Date(Date.now() + 8 * 60 * 60 * 1000).toISOString()
+          };
+          
+          setMySwipes(prev => [...prev, newSwipe]);
+          
+          // Navigate to myswipes to show the new active transfer
+          setCurrentView('myswipes');
         }} />}
-        {currentView === 'inbox' && <InboxView incomingSwipes={incomingSwipes} />}
-        {currentView === 'myswipes' && <MySwipesView mySwipes={mySwipes} />}
+        {currentView === 'inbox' && <InboxView incomingSwipes={incomingSwipes} onSwipeAction={handleSwipeAction} />}
+        {currentView === 'myswipes' && <MySwipesView mySwipes={mySwipes} onSwipeAction={handleSwipeAction} />}
         {currentView === 'profile' && <ProfileView onLogout={handleLogout} />}
       </div>
 

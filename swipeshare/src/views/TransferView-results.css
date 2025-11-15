@@ -78,7 +78,7 @@
 
 .select-match-button {
   width: 100%;
-  background: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%);
+  background: linear-gradient(90deg, #9333ea 0%, #2563eb 100%);
   color: white;
   border: none;
   border-radius: 12px;
@@ -90,8 +90,9 @@
 }
 
 .select-match-button:hover {
+  background: linear-gradient(90deg, #7e22ce 0%, #1d4ed8 100%);
   transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(37, 99, 235, 0.3);
+  box-shadow: 0 8px 16px rgba(147, 51, 234, 0.3);
 }
 
 .select-match-button:active {

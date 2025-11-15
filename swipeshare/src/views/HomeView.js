@@ -1,11 +1,11 @@
 import React from 'react';
-import { Gift, Inbox, User, Clock, CheckCircle, Plus } from 'lucide-react';
-import { mockUsers, mockMySwipes, mockIncomingSwipes } from '../data/mockData';
+import { Gift, Inbox, User, Clock, CheckCircle, Plus, Trash2 } from 'lucide-react';
+import { mockUsers, mockIncomingSwipes } from '../data/mockData';
 import './HomeView.css';
 
-const HomeView = ({ onNavigate }) => {
+const HomeView = ({ onNavigate, mySwipes = [], onSwipeAction = null }) => {
   const currentUser = mockUsers.currentUser;
-  const recentActivity = mockMySwipes.slice(0, 2);
+  const recentActivity = mySwipes.slice(0, 2);
   
   return (
     <div className="home-view">
@@ -83,6 +83,15 @@ const HomeView = ({ onNavigate }) => {
               <div className="activity-status-text">
                 {activity.status === 'completed' ? '✓ Completed' : 'Pending use'}
               </div>
+              {activity.status === 'pending' && (
+                <button 
+                  onClick={() => onSwipeAction && onSwipeAction('cancel', activity.id)}
+                  className="activity-delete-button"
+                  title="Cancel transfer"
+                >
+                  <Trash2 className="activity-delete-icon" />
+                </button>
+              )}
             </div>
           ))}
         </div>

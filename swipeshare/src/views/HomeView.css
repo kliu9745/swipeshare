@@ -157,6 +157,7 @@
   border: 1px solid #e5e7eb;
   border-radius: 12px;
   padding: 16px;
+  position: relative;
 }
 
 .activity-header {
@@ -213,4 +214,26 @@
 .activity-status-text {
   font-size: 14px;
   color: #4b5563;
+}
+
+.activity-delete-button {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background-color: transparent;
+  border: none;
+  color: #ef4444;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.activity-delete-button:hover {
+  background-color: #fee2e2;
+}
+
+.activity-delete-icon {
+  width: 16px;
+  height: 16px;
 }

@@ -497,6 +497,7 @@ export const TransferView = ({ onTransfer = null, currentUser = null, onMatchSel
                       donorId: currentUser?.id || 'user_001',
                       donor: currentUser?.name || 'Anonymous',
                       recipientId: match.userId,
+                      recipient: match.name,
                       code: `SWIPE-${Math.random().toString(36).slice(2, 8).toUpperCase()}`,
                       validUntil: currentOffer?.expiresAt || 'Today',
                       location: currentOffer?.diningHalls?.[0] || 'Any dining hall',
@@ -504,7 +505,8 @@ export const TransferView = ({ onTransfer = null, currentUser = null, onMatchSel
                       hoursLeft: 8,
                       status: 'pending',
                       createdAt: new Date().toLocaleString(),
-                      expiresAt: currentOffer?.expiresAt || new Date(Date.now() + 8 * 60 * 60 * 1000).toISOString()
+                      expiresAt: currentOffer?.expiresAt || new Date(Date.now() + 8 * 60 * 60 * 1000).toISOString(),
+                      quantity: match.quantity
                     };
                     
                     // Call parent to add to incoming swipes and navigate

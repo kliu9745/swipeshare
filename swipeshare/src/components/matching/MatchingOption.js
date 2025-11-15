@@ -55,8 +55,8 @@ export const MatchingOption = ({
         const offerExpiryTime = new Date(offerData.expiresAt).getTime();
         
         activeRequests = activeRequests.filter(request => {
-          // 1. Quantity match: request quantity <= offer quantity
-          if (request.quantity > offerData.quantity) {
+          // 1. Quantity match: offer quantity >= request quantity (person with 5 swipes can fulfill requests for 1, 2, 3, 4, or 5)
+          if (offerData.quantity < request.quantity) {
             return false;
           }
 
