@@ -1,5 +1,4 @@
 import React from 'react';
-import './Card.css';
 
 export const Card = ({ 
   children, 
@@ -7,11 +6,17 @@ export const Card = ({
   variant = 'default',
   onClick = null
 }) => {
+  const variants = {
+    default: 'bg-white border border-gray-200',
+    bordered: 'bg-white border-2 border-gray-200',
+    gradient: 'bg-gradient-to-br from-blue-600 to-blue-800 text-white',
+    highlighted: 'bg-white border-2 border-blue-200'
+  };
+
   return (
     <div 
-      className={`card card-${variant} ${className}`}
+      className={`rounded-xl p-4 ${variants[variant]} ${className} ${onClick ? 'cursor-pointer' : ''}`}
       onClick={onClick}
-      style={onClick ? { cursor: 'pointer' } : {}}
     >
       {children}
     </div>

@@ -21,3 +21,4 @@ server/.pytest_cache/
 swipeshare_app/ 
 
 my_env/
+.env
