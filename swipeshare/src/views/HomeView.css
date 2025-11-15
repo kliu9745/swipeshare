@@ -1,23 +1,21 @@
 .home-view {
   padding: 24px;
-  background-color: #f9fafb;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+  background-color: #f9fafb;
 }
 
 /* Hero Section */
 .hero-section {
-  background: linear-gradient(to bottom right, #2563eb, #1e40af);
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
   border-radius: 16px;
   padding: 24px;
   color: white;
+  margin-bottom: 24px;
 }
 
 .hero-title {
   font-size: 24px;
-  font-weight: bold;
+  font-weight: 700;
   margin-bottom: 8px;
 }
 
@@ -28,20 +26,20 @@
 
 .hero-stats {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr 1fr;
   gap: 16px;
   text-align: center;
 }
 
-.hero-stat-card {
+.hero-stat {
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 12px;
   padding: 12px;
 }
 
 .hero-stat-value {
-  font-size: 30px;
-  font-weight: bold;
+  font-size: 32px;
+  font-weight: 700;
 }
 
 .hero-stat-label {
@@ -49,17 +47,23 @@
   color: #bfdbfe;
 }
 
-/* Quick Actions */
-.quick-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+/* Sections */
+.section {
+  margin-bottom: 24px;
 }
 
 .section-title {
   font-weight: 600;
   color: #111827;
+  margin-bottom: 12px;
   font-size: 16px;
+}
+
+/* Quick Actions */
+.quick-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .action-button {
@@ -72,6 +76,7 @@
   border: none;
   cursor: pointer;
   transition: all 0.2s;
+  font-family: inherit;
 }
 
 .action-button-primary {
@@ -101,6 +106,7 @@
 .action-icon {
   width: 24px;
   height: 24px;
+  color: white;
 }
 
 .action-icon-secondary {
@@ -115,7 +121,7 @@
 
 .action-title {
   font-weight: 600;
-  color: white;
+  font-size: 16px;
 }
 
 .action-subtitle {
@@ -126,6 +132,7 @@
 .action-title-secondary {
   font-weight: 600;
   color: #111827;
+  font-size: 16px;
 }
 
 .action-subtitle-secondary {
@@ -133,13 +140,12 @@
   color: #6b7280;
 }
 
-/* Recent Activity */
-.recent-activity {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.action-arrow {
+  width: 20px;
+  height: 20px;
 }
 
+/* Activity List */
 .activity-list {
   display: flex;
   flex-direction: column;
@@ -182,7 +188,7 @@
   color: #2563eb;
 }
 
-.activity-recipient {
+.activity-name {
   font-weight: 600;
   color: #111827;
 }

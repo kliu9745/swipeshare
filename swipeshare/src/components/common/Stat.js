@@ -1,10 +1,11 @@
 import React from 'react';
+import './Stat.css';
 
-export const Stat = ({ label, value, color = 'bg-white' }) => {
+export const Stat = ({ label, value, textColor = 'default' }) => {
   return (
-    <div className={`${color} rounded-xl p-3 text-center`}>
-      <div className="text-3xl font-bold">{value}</div>
-      <div className="text-sm mt-1 text-gray-600">{label}</div>
+    <div className={`stat stat-text-${textColor}`}>
+      <div className="stat-value">{value}</div>
+      <div className="stat-label">{label}</div>
     </div>
   );
 };

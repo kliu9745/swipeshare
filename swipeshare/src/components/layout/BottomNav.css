@@ -6,7 +6,7 @@
   background-color: white;
   border-top: 1px solid #e5e7eb;
   padding: 12px 24px;
-  padding-bottom: env(safe-area-inset-bottom, 12px);
+  padding-bottom: calc(12px + env(safe-area-inset-bottom));
 }
 
 .bottom-nav-content {
@@ -25,27 +25,22 @@
   background: none;
   border: none;
   cursor: pointer;
-  transition: color 0.2s;
   color: #9ca3af;
-  position: relative;
-}
-
-.nav-item:hover {
-  color: #6b7280;
+  transition: color 0.2s;
+  padding: 0;
 }
 
 .nav-item-active {
   color: #2563eb;
 }
 
+.nav-icon-wrapper {
+  position: relative;
+}
+
 .nav-icon {
   width: 24px;
   height: 24px;
-}
-
-.nav-label {
-  font-size: 12px;
-  font-weight: 600;
 }
 
 .nav-badge {
@@ -61,5 +56,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: bold;
+  font-weight: 700;
+}
+
+.nav-label {
+  font-size: 12px;
+  font-weight: 600;
 }

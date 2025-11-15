@@ -1,23 +1,26 @@
 import React from 'react';
 import { X } from 'lucide-react';
+import './Modal.css';
 
 export const Modal = ({ isOpen, onClose, children, title, fullscreen = false }) => {
   if (!isOpen) return null;
 
   if (fullscreen) {
     return (
-      <div className="fixed inset-0 bg-black z-50 flex flex-col">
-        <div className="flex-1 flex flex-col">
-          <div className="flex items-center justify-between p-6 border-b border-gray-200">
-            <h2 className="text-2xl font-bold text-white">{title}</h2>
-            <button 
-              onClick={onClose}
-              className="text-white hover:text-gray-300"
-            >
-              <X className="w-6 h-6" />
-            </button>
-          </div>
-          <div className="flex-1 overflow-auto">
+      <div className="modal-fullscreen">
+        <div className="modal-fullscreen-content">
+          {title && (
+            <div className="modal-fullscreen-header">
+              <h2 className="modal-fullscreen-title">{title}</h2>
+              <button 
+                onClick={onClose}
+                className="modal-fullscreen-close"
+              >
+                <X className="modal-close-icon" />
+              </button>
+            </div>
+          )}
+          <div className="modal-fullscreen-body">
             {children}
           </div>
         </div>
@@ -26,20 +29,20 @@ export const Modal = ({ isOpen, onClose, children, title, fullscreen = false }) 
   }
 
   return (
-    <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl max-w-md w-full max-h-screen overflow-auto">
+    <div className="modal-overlay">
+      <div className="modal-container">
         {title && (
-          <div className="flex items-center justify-between p-6 border-b border-gray-200">
-            <h2 className="text-xl font-bold text-gray-900">{title}</h2>
+          <div className="modal-header">
+            <h2 className="modal-title">{title}</h2>
             <button 
               onClick={onClose}
-              className="text-gray-400 hover:text-gray-600"
+              className="modal-close"
             >
-              <X className="w-6 h-6" />
+              <X className="modal-close-icon" />
             </button>
           </div>
         )}
-        <div className="p-6">
+        <div className="modal-body">
           {children}
         </div>
       </div>

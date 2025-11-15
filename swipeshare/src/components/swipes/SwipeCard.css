@@ -1,3 +1,26 @@
+.swipe-card {
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 8px;
+}
+
+.swipe-card-outgoing {
+  background-color: white;
+  border: 2px solid #e5e7eb;
+}
+
+.swipe-card-incoming {
+  background-color: white;
+  border: 2px solid #bfdbfe;
+}
+
+.swipe-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Outgoing Card */
 .swipe-card-header {
   display: flex;
   align-items: flex-start;
@@ -64,18 +87,22 @@
   border: none;
   cursor: pointer;
   padding: 0;
-  transition: color 0.2s;
+  font-family: inherit;
 }
 
 .swipe-card-cancel:hover {
   color: #b91c1c;
 }
 
-/* Incoming Swipe Styles */
-.swipe-card-incoming {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+/* Incoming Card */
+.swipe-card-from {
+  font-weight: 600;
+  color: #111827;
+}
+
+.swipe-card-valid {
+  font-size: 14px;
+  color: #6b7280;
 }
 
 .swipe-card-info {
@@ -98,7 +125,6 @@
 
 .swipe-card-info-value {
   font-weight: 600;
-  color: #111827;
 }
 
 .swipe-card-message {
@@ -124,34 +150,40 @@
   padding-top: 8px;
 }
 
-.swipe-card-action-btn {
+.swipe-card-button {
   flex: 1;
   border-radius: 12px;
-  padding: 8px 16px;
+  padding: 8px;
   font-weight: 600;
   border: none;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: background-color 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
+  font-family: inherit;
 }
 
-.swipe-card-action-primary {
+.swipe-card-button-primary {
   background-color: #2563eb;
   color: white;
 }
 
-.swipe-card-action-primary:hover {
+.swipe-card-button-primary:hover {
   background-color: #1d4ed8;
 }
 
-.swipe-card-action-success {
+.swipe-card-button-success {
   background-color: #16a34a;
   color: white;
 }
 
-.swipe-card-action-success:hover {
+.swipe-card-button-success:hover {
   background-color: #15803d;
+}
+
+.swipe-card-button-icon {
+  width: 20px;
+  height: 20px;
 }

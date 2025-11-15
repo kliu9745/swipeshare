@@ -1,17 +1,16 @@
 .inbox-view {
   padding: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+  min-height: 100vh;
+  background-color: #f9fafb;
 }
 
 .inbox-header {
-  margin-bottom: 8px;
+  margin-bottom: 24px;
 }
 
 .inbox-title {
   font-size: 24px;
-  font-weight: bold;
+  font-weight: 700;
   color: #111827;
   margin-bottom: 8px;
 }
@@ -28,18 +27,18 @@
 
 .inbox-empty {
   background-color: white;
-  border-radius: 12px;
-  padding: 32px 16px;
-  text-align: center;
   border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 32px;
+  text-align: center;
 }
 
-.empty-message {
+.inbox-empty-text {
   color: #4b5563;
   margin-bottom: 8px;
 }
 
-.empty-submessage {
+.inbox-empty-subtext {
   font-size: 14px;
   color: #6b7280;
 }

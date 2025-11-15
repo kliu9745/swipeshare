@@ -5,6 +5,10 @@
 }
 
 .user-profile-card {
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
   text-align: center;
 }
 
@@ -26,7 +30,7 @@
 }
 
 .user-name {
-  font-weight: bold;
+  font-weight: 700;
   font-size: 18px;
   color: #111827;
 }
@@ -44,48 +48,55 @@
   margin-top: 8px;
 }
 
-.rating-star {
+.user-star {
   width: 16px;
   height: 16px;
 }
 
-.rating-star-filled {
+.user-star-filled {
   color: #facc15;
   fill: #facc15;
 }
 
-.rating-star-empty {
+.user-star-empty {
   color: #d1d5db;
 }
 
-.rating-value {
+.user-rating-text {
   font-size: 14px;
   color: #4b5563;
   margin-left: 8px;
 }
 
-.stats-title {
+.user-stats-card {
+  background-color: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.user-stats-title {
   font-weight: 600;
   color: #111827;
   margin-bottom: 12px;
 }
 
-.stats-list {
+.user-stats-list {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.stat-row {
+.user-stat-row {
   display: flex;
   justify-content: space-between;
 }
 
-.stat-label {
+.user-stat-label {
   color: #4b5563;
 }
 
-.stat-value {
+.user-stat-value {
   font-weight: 600;
   color: #111827;
 }

@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import Button from '../components/common/Button';
-import Card from '../components/common/Card';
 import MatchingOption from '../components/matching/MatchingOption';
+import { VALIDITY_OPTIONS } from '../utils/constants';
+import './TransferView.css';
 
 export const TransferView = ({ onTransfer = null }) => {
   const [selectedCount, setSelectedCount] = useState(1);
-  const [selectedValidity, setSelectedValidity] = useState('today');
-  const [selectedHalls, setSelectedHalls] = useState('any');
+  const [selectedValidity, setSelectedValidity] = useState(VALIDITY_OPTIONS.TODAY.value);
 
   const handleAIMatch = () => {
     console.log('AI Matching initiated');
@@ -17,28 +16,22 @@ export const TransferView = ({ onTransfer = null }) => {
   };
 
   return (
-    <div className="p-6 space-y-6">
-      <div>
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">Transfer Meal Swipe</h2>
-        <p className="text-gray-600">Share a meal with another student</p>
+    <div className="transfer-view">
+      <div className="transfer-header">
+        <h2 className="transfer-title">Transfer Meal Swipe</h2>
+        <p className="transfer-subtitle">Share a meal with another student</p>
       </div>
 
-      <div className="space-y-4">
+      <div className="transfer-form">
         {/* Number of Swipes */}
-        <div>
-          <label className="block text-sm font-semibold text-gray-900 mb-2">
-            How many swipes?
-          </label>
-          <div className="flex gap-2">
+        <div className="form-section">
+          <label className="form-label">How many swipes?</label>
+          <div className="swipe-selector">
             {[1, 2, 3, 4, 5].map(num => (
               <button
                 key={num}
                 onClick={() => setSelectedCount(num)}
-                className={`flex-1 py-3 border-2 rounded-xl font-semibold transition ${
-                  selectedCount === num
-                    ? 'border-blue-500 bg-blue-50 text-blue-600'
-                    : 'border-gray-300 hover:border-blue-500 hover:bg-blue-50'
-                }`}
+                className={`swipe-button ${selectedCount === num ? 'swipe-button-selected' : ''}`}
               >
                 {num}
               </button>
@@ -47,27 +40,23 @@ export const TransferView = ({ onTransfer = null }) => {
         </div>
 
         {/* Valid Until */}
-        <div>
-          <label className="block text-sm font-semibold text-gray-900 mb-2">
-            Valid until:
-          </label>
-          <div className="space-y-2">
-            {['today', 'week', 'month'].map(option => (
+        <div className="form-section">
+          <label className="form-label">Valid until:</label>
+          <div className="radio-group">
+            {Object.values(VALIDITY_OPTIONS).map(option => (
               <label 
-                key={option}
-                className="flex items-center gap-3 p-4 border-2 border-gray-200 rounded-xl hover:border-blue-300 cursor-pointer transition"
+                key={option.value}
+                className="radio-option"
               >
                 <input 
                   type="radio" 
                   name="validity" 
-                  checked={selectedValidity === option}
-                  onChange={() => setSelectedValidity(option)}
-                  className="w-5 h-5 text-blue-600" 
+                  checked={selectedValidity === option.value}
+                  onChange={() => setSelectedValidity(option.value)}
+                  className="radio-input" 
                 />
-                <span className="font-medium text-gray-900">
-                  {option === 'today' && 'Today only'}
-                  {option === 'week' && 'This week'}
-                  {option === 'month' && 'End of month'}
+                <span className="radio-label">
+                  {option.label}
                 </span>
               </label>
             ))}
@@ -75,18 +64,16 @@ export const TransferView = ({ onTransfer = null }) => {
         </div>
 
         {/* Dining Halls */}
-        <div>
-          <label className="block text-sm font-semibold text-gray-900 mb-2">
-            Which dining halls?
-          </label>
-          <div className="space-y-2">
-            <label className="flex items-center gap-3 p-4 border-2 border-gray-200 rounded-xl hover:border-blue-300 cursor-pointer transition">
+        <div className="form-section">
+          <label className="form-label">Which dining halls?</label>
+          <div className="checkbox-group">
+            <label className="checkbox-option">
               <input 
                 type="checkbox" 
                 defaultChecked 
-                className="w-5 h-5 text-blue-600 rounded" 
+                className="checkbox-input" 
               />
-              <span className="font-medium text-gray-900">Any dining hall</span>
+              <span className="checkbox-label">Any dining hall</span>
             </label>
           </div>
         </div>

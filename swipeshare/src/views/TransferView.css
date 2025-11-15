@@ -1,17 +1,16 @@
 .transfer-view {
   padding: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+  min-height: 100vh;
+  background-color: #f9fafb;
 }
 
 .transfer-header {
-  margin-bottom: 8px;
+  margin-bottom: 24px;
 }
 
 .transfer-title {
   font-size: 24px;
-  font-weight: bold;
+  font-weight: 700;
   color: #111827;
   margin-bottom: 8px;
 }
@@ -26,9 +25,8 @@
   gap: 16px;
 }
 
-.form-group {
-  display: flex;
-  flex-direction: column;
+.form-section {
+  margin-bottom: 16px;
 }
 
 .form-label {
@@ -51,9 +49,10 @@
   border: 2px solid #d1d5db;
   border-radius: 12px;
   font-weight: 600;
-  background: white;
+  background-color: white;
   cursor: pointer;
   transition: all 0.2s;
+  font-family: inherit;
 }
 
 .swipe-button:hover {
@@ -82,7 +81,7 @@
   border: 2px solid #e5e7eb;
   border-radius: 12px;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: border-color 0.2s;
 }
 
 .radio-option:hover {
@@ -115,7 +114,7 @@
   border: 2px solid #e5e7eb;
   border-radius: 12px;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: border-color 0.2s;
 }
 
 .checkbox-option:hover {

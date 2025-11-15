@@ -1,76 +1,93 @@
 .profile-view {
   padding: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+  min-height: 100vh;
+  background-color: #f9fafb;
 }
 
 .profile-header {
-  margin-bottom: 8px;
+  margin-bottom: 24px;
 }
 
 .profile-title {
   font-size: 24px;
-  font-weight: bold;
+  font-weight: 700;
   color: #111827;
 }
 
 .profile-section {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  margin-bottom: 24px;
 }
 
 .profile-section-title {
   font-weight: 600;
   color: #111827;
+  margin-bottom: 12px;
   font-size: 16px;
 }
 
-/* Impact Stats */
-.impact-grid {
+.profile-stats-card {
+  background-color: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.profile-stats-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr 1fr;
   gap: 16px;
 }
 
-.impact-stat {
+.profile-stat {
   text-align: center;
 }
 
-.impact-value-blue {
-  font-size: 30px;
-  font-weight: bold;
+.profile-stat-value {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.profile-stat-blue {
   color: #2563eb;
 }
 
-.impact-value-green {
-  font-size: 30px;
-  font-weight: bold;
+.profile-stat-green {
   color: #16a34a;
 }
 
-.impact-label {
+.profile-stat-label {
   font-size: 14px;
   color: #4b5563;
   margin-top: 4px;
 }
 
-/* Badges */
-.badges-container {
+.profile-badges-card {
+  background-color: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.profile-badges {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
 
-/* Settings */
-.settings-menu {
+.profile-settings-card {
+  background-color: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.profile-settings-list {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.settings-item {
+.profile-settings-item {
   width: 100%;
   text-align: left;
   color: #111827;
@@ -78,18 +95,20 @@
   background: none;
   border: none;
   cursor: pointer;
+  padding: 8px;
   transition: color 0.2s;
-  padding: 8px 0;
+  font-family: inherit;
+  font-size: 16px;
 }
 
-.settings-item:hover {
+.profile-settings-item:hover {
   color: #2563eb;
 }
 
-.settings-item-danger {
+.profile-settings-logout {
   color: #dc2626;
 }
 
-.settings-item-danger:hover {
+.profile-settings-logout:hover {
   color: #b91c1c;
 }

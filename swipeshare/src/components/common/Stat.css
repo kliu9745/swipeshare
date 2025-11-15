@@ -1,15 +1,24 @@
 .stat {
+  background-color: rgba(255, 255, 255, 0.2);
   border-radius: 12px;
   padding: 12px;
   text-align: center;
 }
 
 .stat-value {
-  font-size: 30px;
-  font-weight: bold;
+  font-size: 32px;
+  font-weight: 700;
 }
 
 .stat-label {
   font-size: 14px;
   margin-top: 4px;
+}
+
+.stat-text-default .stat-label {
+  color: #93c5fd;
+}
+
+.stat-text-white .stat-label {
+  color: white;
 }

@@ -6,11 +6,10 @@
 
 /* AI Matching Card */
 .ai-matching-card {
-  background: linear-gradient(to bottom right, #faf5ff, #eff6ff);
+  background: linear-gradient(135deg, #faf5ff 0%, #eff6ff 100%);
   border: 2px solid #e9d5ff;
   border-radius: 12px;
   padding: 24px;
-  color: #111827;
 }
 
 .ai-matching-header {
@@ -20,7 +19,7 @@
   margin-bottom: 12px;
 }
 
-.ai-matching-icon {
+.ai-icon-wrapper {
   width: 48px;
   height: 48px;
   background-color: #f3e8ff;
@@ -36,19 +35,19 @@
   color: #9333ea;
 }
 
-.ai-matching-title {
+.ai-title {
   font-weight: 600;
   color: #111827;
 }
 
-.ai-matching-subtitle {
+.ai-subtitle {
   font-size: 14px;
   color: #4b5563;
 }
 
-.ai-matching-button {
+.ai-button {
   width: 100%;
-  background: linear-gradient(to right, #9333ea, #2563eb);
+  background: linear-gradient(90deg, #9333ea 0%, #2563eb 100%);
   color: white;
   border-radius: 12px;
   padding: 16px;
@@ -60,19 +59,20 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
+  font-family: inherit;
 }
 
-.ai-matching-button:hover {
-  background: linear-gradient(to right, #7e22ce, #1d4ed8);
+.ai-button:hover {
+  background: linear-gradient(90deg, #7e22ce 0%, #1d4ed8 100%);
 }
 
-.button-icon {
+.ai-button-icon {
   width: 20px;
   height: 20px;
 }
 
-/* Manual Transfer */
-.manual-transfer {
+/* Manual Section */
+.manual-section {
   padding-top: 16px;
   border-top: 1px solid #e5e7eb;
 }
@@ -91,11 +91,12 @@
   border: 2px solid #d1d5db;
   border-radius: 12px;
   font-size: 16px;
+  font-family: inherit;
 }
 
 .manual-input:focus {
-  border-color: #2563eb;
   outline: none;
+  border-color: #2563eb;
 }
 
 .manual-button {
@@ -109,6 +110,7 @@
   border: none;
   cursor: pointer;
   transition: background-color 0.2s;
+  font-family: inherit;
 }
 
 .manual-button:hover {

@@ -1,4 +1,4 @@
-.qr-modal-container {
+.qr-modal-content {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -15,7 +15,7 @@
 
 .qr-modal-title {
   font-size: 24px;
-  font-weight: bold;
+  font-weight: 700;
   margin-bottom: 8px;
 }
 
@@ -23,7 +23,7 @@
   color: #d1d5db;
 }
 
-.qr-code-display {
+.qr-code-container {
   width: 320px;
   height: 320px;
   background-color: white;
@@ -41,45 +41,43 @@
 }
 
 .qr-code-text {
-  font-family: monospace;
+  font-family: 'Courier New', monospace;
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 700;
   margin-bottom: 32px;
 }
 
-.qr-modal-details {
+.qr-modal-info {
   width: 100%;
   max-width: 448px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
 }
 
-.qr-detail-card {
+.qr-info-card {
   background-color: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   border-radius: 12px;
   padding: 16px;
   color: white;
+  margin-bottom: 16px;
 }
 
-.qr-detail-row {
+.qr-info-row {
   display: flex;
   align-items: center;
   gap: 8px;
   margin-bottom: 8px;
 }
 
-.qr-detail-row:last-child {
+.qr-info-row:last-child {
   margin-bottom: 0;
 }
 
-.qr-detail-icon {
+.qr-info-icon {
   width: 20px;
   height: 20px;
 }
 
-.qr-detail-text {
+.qr-info-text {
   font-weight: 600;
 }
 
@@ -89,10 +87,11 @@
   color: #111827;
   border-radius: 12px;
   padding: 16px;
-  font-weight: bold;
+  font-weight: 700;
   border: none;
   cursor: pointer;
   transition: background-color 0.2s;
+  font-family: inherit;
 }
 
 .qr-close-button:hover {
