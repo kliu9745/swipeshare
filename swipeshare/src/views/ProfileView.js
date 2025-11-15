@@ -1,76 +1,69 @@
 import React from 'react';
 import UserProfile from '../components/profile/UserProfile';
-import Button from '../components/common/Button';
-import Card from '../components/common/Card';
 import Badge from '../components/common/Badge';
+import { mockUsers } from '../data/mockData';
+import './ProfileView.css';
 
 export const ProfileView = ({ onLogout = null }) => {
-  const mockUser = {
-    name: 'Jordan Smith',
-    email: 'jordan@cornell.edu',
-    rating: 4.8,
-    reliability: 'High',
-    completionRate: 98,
-    memberSince: 'Nov 2024'
-  };
+  const currentUser = mockUsers.currentUser;
 
   return (
-    <div className="p-6 space-y-6">
-      <div>
-        <h2 className="text-2xl font-bold text-gray-900">Profile</h2>
+    <div className="profile-view">
+      <div className="profile-header">
+        <h2 className="profile-title">Profile</h2>
       </div>
 
       {/* User Profile */}
-      <UserProfile user={mockUser} />
+      <UserProfile user={currentUser} />
 
       {/* Statistics */}
-      <div className="space-y-3">
-        <h3 className="font-semibold text-gray-900">Impact Summary</h3>
-        <Card variant="bordered">
-          <div className="grid grid-cols-2 gap-4">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-blue-600">24</div>
-              <div className="text-sm text-gray-600 mt-1">Total Swipes Shared</div>
+      <div className="profile-section">
+        <h3 className="profile-section-title">Impact Summary</h3>
+        <div className="profile-stats-card">
+          <div className="profile-stats-grid">
+            <div className="profile-stat">
+              <div className="profile-stat-value profile-stat-blue">{currentUser.swipesShared}</div>
+              <div className="profile-stat-label">Total Swipes Shared</div>
             </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-green-600">18</div>
-              <div className="text-sm text-gray-600 mt-1">Students Helped</div>
+            <div className="profile-stat">
+              <div className="profile-stat-value profile-stat-green">{currentUser.studentsHelped}</div>
+              <div className="profile-stat-label">Students Helped</div>
             </div>
           </div>
-        </Card>
+        </div>
       </div>
 
       {/* Achievements */}
-      <div className="space-y-3">
-        <h3 className="font-semibold text-gray-900">Badges & Achievements</h3>
-        <Card variant="bordered">
-          <div className="flex flex-wrap gap-2">
-            <Badge variant="success">🌟 Super Donor</Badge>
-            <Badge variant="default">💯 Reliable</Badge>
-            <Badge variant="default">🤝 Community Helper</Badge>
+      <div className="profile-section">
+        <h3 className="profile-section-title">Badges & Achievements</h3>
+        <div className="profile-badges-card">
+          <div className="profile-badges">
+            {currentUser.badges.map(badge => (
+              <Badge key={badge.id} variant={badge.variant}>{badge.name}</Badge>
+            ))}
           </div>
-        </Card>
+        </div>
       </div>
 
       {/* Settings */}
-      <div className="space-y-3">
-        <h3 className="font-semibold text-gray-900">Account</h3>
-        <Card variant="bordered">
-          <div className="space-y-3">
-            <button className="w-full text-left text-gray-900 font-medium hover:text-blue-600 transition">
+      <div className="profile-section">
+        <h3 className="profile-section-title">Account</h3>
+        <div className="profile-settings-card">
+          <div className="profile-settings-list">
+            <button className="profile-settings-item">
               ⚙️ Settings
             </button>
-            <button className="w-full text-left text-gray-900 font-medium hover:text-blue-600 transition">
+            <button className="profile-settings-item">
               📞 Help & Support
             </button>
             <button 
               onClick={onLogout}
-              className="w-full text-left text-red-600 font-medium hover:text-red-700 transition"
+              className="profile-settings-item profile-settings-logout"
             >
               🚪 Sign Out
             </button>
           </div>
-        </Card>
+        </div>
       </div>
     </div>
   );

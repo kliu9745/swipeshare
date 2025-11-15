@@ -1,67 +1,89 @@
 import React from 'react';
-import { Plus, Gift, Inbox } from 'lucide-react';
-import Card from '../components/common/Card';
-import Button from '../components/common/Button';
-import ImpactStats from '../components/profile/ImpactStats';
-import SwipeCard from '../components/swipes/SwipeCard';
+import { Gift, Inbox, User, Clock, CheckCircle, Plus } from 'lucide-react';
+import { mockUsers, mockMySwipes, mockIncomingSwipes } from '../data/mockData';
+import './HomeView.css';
 
-export const HomeView = ({ onNavigate, mySwipes = [] }) => {
-  const mockStats = {
-    planName: 'Unlimited Plan',
-    daysLeft: 87,
-    thisWeekUsed: 10,
-    thisWeekTotal: 14,
-    weekProgress: 71,
-    swipesShared: 12,
-    mealsGiven: 12
-  };
-
+const HomeView = ({ onNavigate }) => {
+  const currentUser = mockUsers.currentUser;
+  const recentActivity = mockMySwipes.slice(0, 2);
+  
   return (
-    <div className="p-6 space-y-6">
-      {/* Hero Section with Stats */}
-      <ImpactStats stats={mockStats} />
+    <div className="home-view">
+      {/* Hero Section */}
+      <div className="hero-section">
+        <h2 className="hero-title">Welcome back, {currentUser.name.split(' ')[0]}!</h2>
+        <p className="hero-subtitle">Share meals, build community</p>
+        <div className="hero-stats">
+          <div className="hero-stat">
+            <div className="hero-stat-value">{currentUser.swipesShared}</div>
+            <div className="hero-stat-label">Swipes Shared</div>
+          </div>
+          <div className="hero-stat">
+            <div className="hero-stat-value">{currentUser.planDaysRemaining}</div>
+            <div className="hero-stat-label">Days Left</div>
+          </div>
+        </div>
+      </div>
 
       {/* Quick Actions */}
-      <div className="space-y-3">
-        <h3 className="font-semibold text-gray-900">Quick Actions</h3>
-        <Button 
-          variant="primary"
-          size="full"
-          onClick={() => onNavigate('transfer')}
-          className="justify-between p-4"
-        >
-          <div className="flex items-center gap-3">
-            <Gift className="w-6 h-6" />
-            <div className="text-left">
-              <div className="font-semibold">Transfer Swipe</div>
-              <div className="text-sm text-blue-100">Help someone today</div>
+      <div className="section">
+        <h3 className="section-title">Quick Actions</h3>
+        <div className="quick-actions">
+          <button 
+            className="action-button action-button-primary"
+            onClick={() => onNavigate && onNavigate('transfer')}
+          >
+            <div className="action-button-content">
+              <Gift className="action-icon" />
+              <div className="action-text">
+                <div className="action-title">Transfer Swipe</div>
+                <div className="action-subtitle">Help someone today</div>
+              </div>
             </div>
-          </div>
-          <Plus className="w-5 h-5" />
-        </Button>
-
-        <Button 
-          variant="secondary"
-          size="full"
-          onClick={() => onNavigate('inbox')}
-          className="justify-between p-4"
-        >
-          <div className="flex items-center gap-3">
-            <Inbox className="w-6 h-6 text-gray-700" />
-            <div className="text-left">
-              <div className="font-semibold text-gray-900">View Inbox</div>
-              <div className="text-sm text-gray-500">1 new swipe</div>
+            <Plus className="action-arrow" />
+          </button>
+          
+          <button 
+            className="action-button action-button-secondary"
+            onClick={() => onNavigate && onNavigate('inbox')}
+          >
+            <div className="action-button-content">
+              <Inbox className="action-icon-secondary" />
+              <div className="action-text">
+                <div className="action-title-secondary">View Inbox</div>
+                <div className="action-subtitle-secondary">{mockIncomingSwipes.length} new {mockIncomingSwipes.length === 1 ? 'swipe' : 'swipes'}</div>
+              </div>
             </div>
-          </div>
-        </Button>
+          </button>
+        </div>
       </div>
 
       {/* Recent Activity */}
-      <div className="space-y-3">
-        <h3 className="font-semibold text-gray-900">Recent Activity</h3>
-        <div className="space-y-2">
-          {mySwipes.slice(0, 2).map(swipe => (
-            <SwipeCard key={swipe.id} swipe={swipe} type="outgoing" />
+      <div className="section">
+        <h3 className="section-title">Recent Activity</h3>
+        <div className="activity-list">
+          {recentActivity.map(activity => (
+            <div key={activity.id} className="activity-card">
+              <div className="activity-header">
+                <div className="activity-user">
+                  <div className="activity-avatar">
+                    <User className="activity-avatar-icon" />
+                  </div>
+                  <div>
+                    <div className="activity-name">{activity.recipient}</div>
+                    <div className="activity-time">{activity.createdAt}</div>
+                  </div>
+                </div>
+                {activity.status === 'completed' ? (
+                  <CheckCircle className="activity-status-completed" />
+                ) : (
+                  <Clock className="activity-status-pending" />
+                )}
+              </div>
+              <div className="activity-status-text">
+                {activity.status === 'completed' ? '✓ Completed' : 'Pending use'}
+              </div>
+            </div>
           ))}
         </div>
       </div>

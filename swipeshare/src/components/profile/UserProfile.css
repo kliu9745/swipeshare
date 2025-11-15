@@ -1,0 +1,102 @@
+.user-profile {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.user-profile-card {
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+}
+
+.user-avatar {
+  width: 64px;
+  height: 64px;
+  background-color: #dbeafe;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+
+.user-avatar-icon {
+  width: 40px;
+  height: 40px;
+  color: #2563eb;
+}
+
+.user-name {
+  font-weight: 700;
+  font-size: 18px;
+  color: #111827;
+}
+
+.user-email {
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.user-rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.user-star {
+  width: 16px;
+  height: 16px;
+}
+
+.user-star-filled {
+  color: #facc15;
+  fill: #facc15;
+}
+
+.user-star-empty {
+  color: #d1d5db;
+}
+
+.user-rating-text {
+  font-size: 14px;
+  color: #4b5563;
+  margin-left: 8px;
+}
+
+.user-stats-card {
+  background-color: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.user-stats-title {
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 12px;
+}
+
+.user-stats-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.user-stat-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-stat-label {
+  color: #4b5563;
+}
+
+.user-stat-value {
+  font-weight: 600;
+  color: #111827;
+}

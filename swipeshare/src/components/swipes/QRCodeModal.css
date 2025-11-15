@@ -1,0 +1,99 @@
+.qr-modal-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  color: white;
+}
+
+.qr-modal-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.qr-modal-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.qr-modal-subtitle {
+  color: #d1d5db;
+}
+
+.qr-code-container {
+  width: 320px;
+  height: 320px;
+  background-color: white;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.qr-code-icon {
+  width: 256px;
+  height: 256px;
+  color: #1f2937;
+}
+
+.qr-code-text {
+  font-family: 'Courier New', monospace;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 32px;
+}
+
+.qr-modal-info {
+  width: 100%;
+  max-width: 448px;
+}
+
+.qr-info-card {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 16px;
+  color: white;
+  margin-bottom: 16px;
+}
+
+.qr-info-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.qr-info-row:last-child {
+  margin-bottom: 0;
+}
+
+.qr-info-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.qr-info-text {
+  font-weight: 600;
+}
+
+.qr-close-button {
+  width: 100%;
+  background-color: white;
+  color: #111827;
+  border-radius: 12px;
+  padding: 16px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-family: inherit;
+}
+
+.qr-close-button:hover {
+  background-color: #f3f4f6;
+}

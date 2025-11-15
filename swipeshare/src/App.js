@@ -6,41 +6,15 @@ import TransferView from './views/TransferView';
 import InboxView from './views/InboxView';
 import MySwipesView from './views/MySwipesView';
 import ProfileView from './views/ProfileView';
+import { mockMySwipes, mockIncomingSwipes } from './data/mockData';
+import './App.css';
 
 const SwipeShareApp = () => {
   const [currentView, setCurrentView] = useState('home');
 
-  // Mock data
-  const mySwipes = [
-    {
-      id: 'swipe_001',
-      recipient: 'Jamie Chen',
-      status: 'pending',
-      validUntil: 'Today, 8:00 PM',
-      location: 'Any dining hall',
-      createdAt: 'Nov 15, 2:34 PM'
-    },
-    {
-      id: 'swipe_002',
-      recipient: 'Alex Kumar',
-      status: 'completed',
-      validUntil: 'Nov 14, 8:00 PM',
-      location: 'North Dining',
-      createdAt: 'Nov 14, 6:12 PM'
-    }
-  ];
-
-  const incomingSwipes = [
-    {
-      id: 'swipe_003',
-      donor: 'Sarah Williams',
-      code: 'SWIPE-NK7H-92JD-4KLP',
-      validUntil: 'Today, 8:00 PM',
-      location: 'Any dining hall',
-      message: 'Hope this helps! Enjoy your meal 😊',
-      hoursLeft: 4.5
-    }
-  ];
+  // Use mock data
+  const mySwipes = mockMySwipes;
+  const incomingSwipes = mockIncomingSwipes;
 
   const handleNavigate = (view) => {
     setCurrentView(view);
@@ -56,12 +30,12 @@ const SwipeShareApp = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-20">
+    <div className="app-container">
       {/* Header */}
       <Header onProfileClick={handleProfileClick} />
 
       {/* Main Content */}
-      <div className="max-w-2xl mx-auto">
+      <div className="app-content">
         {currentView === 'home' && <HomeView onNavigate={handleNavigate} mySwipes={mySwipes} />}
         {currentView === 'transfer' && <TransferView onTransfer={null} />}
         {currentView === 'inbox' && <InboxView incomingSwipes={incomingSwipes} />}
@@ -70,7 +44,7 @@ const SwipeShareApp = () => {
       </div>
 
       {/* Bottom Navigation */}
-      <BottomNav currentView={currentView} onNavigate={handleNavigate} />
+      <BottomNav currentView={currentView} onNavigate={handleNavigate} inboxCount={incomingSwipes.length} />
     </div>
   );
 };
