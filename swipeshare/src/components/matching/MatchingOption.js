@@ -49,11 +49,38 @@ export const MatchingOption = ({
           matchingPreference: 'AI_MATCH'
         });
 
-        const activeRequests = requestService.getActiveRequests();
+        let activeRequests = requestService.getActiveRequests();
+
+        // Filter requests by offer criteria
+        const offerExpiryTime = new Date(offerData.expiresAt).getTime();
+        
+        activeRequests = activeRequests.filter(request => {
+          // 1. Quantity match: request quantity <= offer quantity
+          if (request.quantity > offerData.quantity) {
+            return false;
+          }
+
+          // 2. Dining hall match: if offer specifies halls, request must want at least one of them
+          if (offerData.diningHalls && offerData.diningHalls.length > 0) {
+            const hasCommonHall = request.preferredDiningHalls.length === 0 || 
+              request.preferredDiningHalls.some(hall => offerData.diningHalls.includes(hall));
+            if (!hasCommonHall) {
+              return false;
+            }
+          }
+
+          // 3. Time window match: request needed time must be before offer expiry
+          const requestNeededTime = new Date(request.neededBy).getTime();
+          if (requestNeededTime > offerExpiryTime) {
+            return false;
+          }
+
+          return true;
+        });
 
         if (activeRequests.length === 0) {
           if (onError) {
-            onError('No active requests found. Your offer has been posted and will be visible to users who need swipes.');
+            onError('No matching requests found for these criteria. Your offer has been posted and will be visible to users who need swipes.');
           }
           setLoading(false);
           return;
@@ -87,7 +114,18 @@ export const MatchingOption = ({
           };
         });
 
-        onMatchesFound(formattedMatches, offer);
+        // Ensure all matches are unique by requestId
+        const uniqueMatches = [];
+        const seenRequestIds = new Set();
+        
+        for (const match of formattedMatches) {
+          if (!seenRequestIds.has(match.requestId)) {
+            uniqueMatches.push(match);
+            seenRequestIds.add(match.requestId);
+          }
+        }
+
+        onMatchesFound(uniqueMatches, offer);
         
       } catch (error) {
         console.error('AI matching error:', error);

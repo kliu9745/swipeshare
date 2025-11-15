@@ -193,6 +193,11 @@ export const mockImpactStats = {
 export function initializeTestData() {
   console.log('🧪 Initializing test data...');
 
+  // Clear previous data to avoid duplicates
+  userService.users.clear();
+  offerService.offers = [];
+  requestService.requests = [];
+
   // Create test users in userService
   const users = createTestUsers();
   
@@ -315,6 +320,39 @@ function createTestUsers() {
     }
   ];
 
+  // Add dynamic users for requests
+  const dynamicUserNames = [
+    'Casey Morgan', 'Jordan Lee', 'Taylor Smith', 'Morgan Evans', 'Riley Johnson', 'Casey Brown', 'Avery Davis', 'Quinn Wilson',
+    'Sage Anderson', 'Blake Richardson', 'Dakota Nelson', 'Phoenix Martinez', 'River Williams', 'Rowan Jackson', 'Skylar White',
+    'Cameron Green', 'Jamie Thompson', 'Austin Harris'
+  ];
+  const campuses = ['North Campus', 'West Campus', 'Central Campus'];
+  const mealPlans = [true, false, true, true, false]; // Mix of with and without meal plans
+  
+  dynamicUserNames.forEach((name, idx) => {
+    const hasMealPlan = mealPlans[idx % mealPlans.length];
+    const shareScore = Math.floor(Math.random() * 50);
+    const receiveScore = Math.floor(Math.random() * 30);
+    
+    testUsers.push({
+      id: `user_dynamic_${idx + 1}`,
+      name,
+      email: `${name.toLowerCase().replace(' ', '.')}@cornell.edu`,
+      location: campuses[idx % campuses.length],
+      hasMealPlan,
+      stats: {
+        swipesShared: shareScore,
+        swipesReceived: receiveScore,
+        completionRate: 75 + Math.floor(Math.random() * 25),
+        rating: 3.8 + Math.random() * 1.2
+      },
+      needProfile: {
+        hasMealPlan: idx % 2 === 0,
+        requestFrequency: Math.floor(Math.random() * 7)
+      }
+    });
+  });
+
   // Add users to userService
   testUsers.forEach(user => {
     userService.createUser(user);
@@ -367,6 +405,9 @@ function createTestOffers(users) {
  */
 function createTestRequests(users) {
   const requests = [];
+  const allDiningHalls = ['Okenshields', '104West!', 'Becker House Dining Room', 'Cook House Dining Room', "Jansen's Dining Room at Bethe House", 'Keeton House Dining Room', 'Rose House Dining Room', 'Morrison Dining Room', 'North Star Dining Room', 'Risley Dining Room'];
+  const mealTimes = ['breakfast', 'lunch', 'dinner'];
+  const urgencies = ['LOW', 'MEDIUM', 'HIGH'];
 
   // Jamie's urgent request (no meal plan)
   requests.push(requestService.createRequest('user_jamie', {
@@ -391,6 +432,36 @@ function createTestRequests(users) {
     reason: 'Ran out of swipes early this week',
     matchingPreference: 'AI_MATCH'
   }));
+
+  // Generate 8+ dynamic requests with varied preferences
+  const dynamicUsers = [
+    { id: 'user_dynamic_1', name: 'Casey Morgan' },
+    { id: 'user_dynamic_2', name: 'Jordan Lee' },
+    { id: 'user_dynamic_3', name: 'Taylor Smith' },
+    { id: 'user_dynamic_4', name: 'Morgan Evans' },
+    { id: 'user_dynamic_5', name: 'Riley Johnson' },
+    { id: 'user_dynamic_6', name: 'Casey Brown' },
+    { id: 'user_dynamic_7', name: 'Avery Davis' },
+    { id: 'user_dynamic_8', name: 'Quinn Wilson' }
+  ];
+
+  dynamicUsers.forEach((user, idx) => {
+    const hallSubset = [allDiningHalls[idx % allDiningHalls.length], allDiningHalls[(idx + 1) % allDiningHalls.length]];
+    const mealTime = mealTimes[idx % mealTimes.length];
+    const urgency = urgencies[idx % urgencies.length];
+    const quantity = (idx % 4) + 1; // 1-4 swipes
+    
+    requests.push(requestService.createRequest(user.id, {
+      requesterName: user.name,
+      quantity,
+      preferredDiningHalls: hallSubset,
+      mealTime,
+      neededBy: new Date(Date.now() + ((idx % 3) + 1) * 24 * 60 * 60 * 1000).toISOString(),
+      urgency,
+      reason: `Need ${quantity} swipe${quantity > 1 ? 's' : ''} for ${mealTime}`,
+      matchingPreference: 'AI_MATCH'
+    }));
+  });
 
   return requests;
 }
