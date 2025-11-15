@@ -46,6 +46,8 @@ SwipeShare creates a virtual swipe transfer system where:
 - Clean, modern interface
 - Full-screen QR code display
 - Real-time transfer notifications
+  
+<img width="576" height="282" alt="Screenshot 2025-11-15 at 5 50 11 PM" src="https://github.com/user-attachments/assets/96f3767e-50dd-4b21-ba1c-b8c5138a24be" />
 
 ### 4. Profile Page
 - Displays user info, rating score, badges & achievements
