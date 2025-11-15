@@ -1,0 +1,210 @@
+.home-view {
+  padding: 24px;
+  background-color: #f9fafb;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(to bottom right, #2563eb, #1e40af);
+  border-radius: 16px;
+  padding: 24px;
+  color: white;
+}
+
+.hero-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.hero-subtitle {
+  color: #bfdbfe;
+  margin-bottom: 16px;
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  text-align: center;
+}
+
+.hero-stat-card {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.hero-stat-value {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.hero-stat-label {
+  font-size: 14px;
+  color: #bfdbfe;
+}
+
+/* Quick Actions */
+.quick-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.section-title {
+  font-weight: 600;
+  color: #111827;
+  font-size: 16px;
+}
+
+.action-button {
+  width: 100%;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.action-button-primary {
+  background-color: #2563eb;
+  color: white;
+}
+
+.action-button-primary:hover {
+  background-color: #1d4ed8;
+}
+
+.action-button-secondary {
+  background-color: white;
+  border: 2px solid #e5e7eb;
+}
+
+.action-button-secondary:hover {
+  border-color: #93c5fd;
+}
+
+.action-button-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.action-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.action-icon-secondary {
+  width: 24px;
+  height: 24px;
+  color: #374151;
+}
+
+.action-text {
+  text-align: left;
+}
+
+.action-title {
+  font-weight: 600;
+  color: white;
+}
+
+.action-subtitle {
+  font-size: 14px;
+  color: #bfdbfe;
+}
+
+.action-title-secondary {
+  font-weight: 600;
+  color: #111827;
+}
+
+.action-subtitle-secondary {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* Recent Activity */
+.recent-activity {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.activity-card {
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.activity-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.activity-user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.activity-avatar {
+  width: 40px;
+  height: 40px;
+  background-color: #dbeafe;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.activity-avatar-icon {
+  width: 20px;
+  height: 20px;
+  color: #2563eb;
+}
+
+.activity-recipient {
+  font-weight: 600;
+  color: #111827;
+}
+
+.activity-time {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.activity-status-completed {
+  width: 20px;
+  height: 20px;
+  color: #22c55e;
+}
+
+.activity-status-pending {
+  width: 20px;
+  height: 20px;
+  color: #eab308;
+}
+
+.activity-status-text {
+  font-size: 14px;
+  color: #4b5563;
+}

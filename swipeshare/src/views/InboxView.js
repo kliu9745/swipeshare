@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import SwipeCard from '../components/swipes/SwipeCard';
 import QRCodeModal from '../components/swipes/QRCodeModal';
-import Card from '../components/common/Card';
+import './InboxView.css';
 
 export const InboxView = ({ incomingSwipes = [], onSwipeAction = null }) => {
   const [selectedSwipe, setSelectedSwipe] = useState(null);
@@ -26,14 +26,14 @@ export const InboxView = ({ incomingSwipes = [], onSwipeAction = null }) => {
   };
 
   return (
-    <div className="p-6 space-y-6">
-      <div>
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">Incoming Swipes</h2>
-        <p className="text-gray-600">Meals shared with you</p>
+    <div className="inbox-view">
+      <div className="inbox-header">
+        <h2 className="inbox-title">Incoming Swipes</h2>
+        <p className="inbox-subtitle">Meals shared with you</p>
       </div>
 
       {incomingSwipes.length > 0 ? (
-        <div className="space-y-4">
+        <div className="inbox-list">
           {incomingSwipes.map(swipe => (
             <SwipeCard 
               key={swipe.id}
@@ -44,10 +44,10 @@ export const InboxView = ({ incomingSwipes = [], onSwipeAction = null }) => {
           ))}
         </div>
       ) : (
-        <Card className="text-center py-8">
-          <p className="text-gray-600">No incoming swipes yet.</p>
-          <p className="text-sm text-gray-500">When someone sends you a swipe, it will appear here.</p>
-        </Card>
+        <div className="inbox-empty">
+          <p className="empty-message">No incoming swipes yet.</p>
+          <p className="empty-submessage">When someone sends you a swipe, it will appear here.</p>
+        </div>
       )}
 
       <QRCodeModal 

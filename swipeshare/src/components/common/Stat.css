@@ -1,0 +1,15 @@
+.stat {
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.stat-label {
+  font-size: 14px;
+  margin-top: 4px;
+}

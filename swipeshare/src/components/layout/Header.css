@@ -1,0 +1,45 @@
+.header {
+  background-color: white;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 16px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 672px;
+  margin: 0 auto;
+}
+
+.header-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #2563eb;
+}
+
+.header-profile-button {
+  width: 40px;
+  height: 40px;
+  background-color: #f3f4f6;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.header-profile-button:hover {
+  background-color: #e5e7eb;
+}
+
+.header-profile-icon {
+  width: 20px;
+  height: 20px;
+  color: #4b5563;
+}

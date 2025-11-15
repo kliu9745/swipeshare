@@ -1,0 +1,135 @@
+.transfer-view {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.transfer-header {
+  margin-bottom: 8px;
+}
+
+.transfer-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.transfer-subtitle {
+  color: #4b5563;
+}
+
+.transfer-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+/* Swipe Selector */
+.swipe-selector {
+  display: flex;
+  gap: 8px;
+}
+
+.swipe-button {
+  flex: 1;
+  padding: 12px 0;
+  border: 2px solid #d1d5db;
+  border-radius: 12px;
+  font-weight: 600;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.swipe-button:hover {
+  border-color: #2563eb;
+  background-color: #eff6ff;
+}
+
+.swipe-button-selected {
+  border-color: #2563eb;
+  background-color: #eff6ff;
+  color: #2563eb;
+}
+
+/* Radio Group */
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.radio-option:hover {
+  border-color: #93c5fd;
+}
+
+.radio-input {
+  width: 20px;
+  height: 20px;
+  accent-color: #2563eb;
+}
+
+.radio-label {
+  font-weight: 500;
+  color: #111827;
+}
+
+/* Checkbox Group */
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.checkbox-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.checkbox-option:hover {
+  border-color: #93c5fd;
+}
+
+.checkbox-input {
+  width: 20px;
+  height: 20px;
+  accent-color: #2563eb;
+  border-radius: 4px;
+}
+
+.checkbox-label {
+  font-weight: 500;
+  color: #111827;
+}

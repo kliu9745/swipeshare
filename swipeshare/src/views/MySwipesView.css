@@ -1,0 +1,57 @@
+.myswipes-view {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.myswipes-header {
+  margin-bottom: 8px;
+}
+
+.myswipes-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.myswipes-subtitle {
+  color: #4b5563;
+}
+
+.transfers-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.section-title {
+  font-weight: 600;
+  color: #111827;
+  font-size: 16px;
+}
+
+.transfers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.transfers-empty {
+  background-color: white;
+  border-radius: 12px;
+  padding: 32px 16px;
+  text-align: center;
+  border: 1px solid #e5e7eb;
+}
+
+.empty-message {
+  color: #4b5563;
+  margin-bottom: 8px;
+}
+
+.empty-submessage {
+  font-size: 14px;
+  color: #6b7280;
+}

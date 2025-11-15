@@ -1,0 +1,95 @@
+.profile-view {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.profile-header {
+  margin-bottom: 8px;
+}
+
+.profile-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #111827;
+}
+
+.profile-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.profile-section-title {
+  font-weight: 600;
+  color: #111827;
+  font-size: 16px;
+}
+
+/* Impact Stats */
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.impact-stat {
+  text-align: center;
+}
+
+.impact-value-blue {
+  font-size: 30px;
+  font-weight: bold;
+  color: #2563eb;
+}
+
+.impact-value-green {
+  font-size: 30px;
+  font-weight: bold;
+  color: #16a34a;
+}
+
+.impact-label {
+  font-size: 14px;
+  color: #4b5563;
+  margin-top: 4px;
+}
+
+/* Badges */
+.badges-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Settings */
+.settings-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.settings-item {
+  width: 100%;
+  text-align: left;
+  color: #111827;
+  font-weight: 500;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s;
+  padding: 8px 0;
+}
+
+.settings-item:hover {
+  color: #2563eb;
+}
+
+.settings-item-danger {
+  color: #dc2626;
+}
+
+.settings-item-danger:hover {
+  color: #b91c1c;
+}

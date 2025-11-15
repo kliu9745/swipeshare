@@ -1,0 +1,24 @@
+.card {
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.card-default {
+  background-color: white;
+  border: 1px solid #e5e7eb;
+}
+
+.card-bordered {
+  background-color: white;
+  border: 2px solid #e5e7eb;
+}
+
+.card-gradient {
+  background: linear-gradient(to bottom right, #2563eb, #1e40af);
+  color: white;
+}
+
+.card-highlighted {
+  background-color: white;
+  border: 2px solid #bfdbfe;
+}

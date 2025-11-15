@@ -6,41 +6,20 @@ import TransferView from './views/TransferView';
 import InboxView from './views/InboxView';
 import MySwipesView from './views/MySwipesView';
 import ProfileView from './views/ProfileView';
+import { 
+  mockMySwipes, 
+  mockIncomingSwipes, 
+  mockUsers,
+  mockImpactStats 
+} from './data/mockData';
+import './App.css';
 
 const SwipeShareApp = () => {
   const [currentView, setCurrentView] = useState('home');
-
-  // Mock data
-  const mySwipes = [
-    {
-      id: 'swipe_001',
-      recipient: 'Jamie Chen',
-      status: 'pending',
-      validUntil: 'Today, 8:00 PM',
-      location: 'Any dining hall',
-      createdAt: 'Nov 15, 2:34 PM'
-    },
-    {
-      id: 'swipe_002',
-      recipient: 'Alex Kumar',
-      status: 'completed',
-      validUntil: 'Nov 14, 8:00 PM',
-      location: 'North Dining',
-      createdAt: 'Nov 14, 6:12 PM'
-    }
-  ];
-
-  const incomingSwipes = [
-    {
-      id: 'swipe_003',
-      donor: 'Sarah Williams',
-      code: 'SWIPE-NK7H-92JD-4KLP',
-      validUntil: 'Today, 8:00 PM',
-      location: 'Any dining hall',
-      message: 'Hope this helps! Enjoy your meal 😊',
-      hoursLeft: 4.5
-    }
-  ];
+  const [mySwipes] = useState(mockMySwipes);
+  const [incomingSwipes] = useState(mockIncomingSwipes);
+  const [currentUser] = useState(mockUsers.currentUser);
+  const [impactStats] = useState(mockImpactStats);
 
   const handleNavigate = (view) => {
     setCurrentView(view);
@@ -56,21 +35,49 @@ const SwipeShareApp = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-20">
+    <div className="app-container">
       {/* Header */}
-      <Header onProfileClick={handleProfileClick} />
+      <Header onProfileClick={handleProfileClick} user={currentUser} />
 
       {/* Main Content */}
-      <div className="max-w-2xl mx-auto">
-        {currentView === 'home' && <HomeView onNavigate={handleNavigate} mySwipes={mySwipes} />}
-        {currentView === 'transfer' && <TransferView onTransfer={null} />}
-        {currentView === 'inbox' && <InboxView incomingSwipes={incomingSwipes} />}
-        {currentView === 'myswipes' && <MySwipesView mySwipes={mySwipes} />}
-        {currentView === 'profile' && <ProfileView onLogout={handleLogout} />}
+      <div className="app-content">
+        {currentView === 'home' && (
+          <HomeView 
+            onNavigate={handleNavigate} 
+            mySwipes={mySwipes.slice(0, 2)}
+            impactStats={impactStats}
+          />
+        )}
+        {currentView === 'transfer' && (
+          <TransferView onTransfer={null} />
+        )}
+        {currentView === 'inbox' && (
+          <InboxView 
+            incomingSwipes={incomingSwipes}
+            onSwipeAction={(action, swipeId) => console.log(action, swipeId)}
+          />
+        )}
+        {currentView === 'myswipes' && (
+          <MySwipesView 
+            mySwipes={mySwipes}
+            impactStats={impactStats}
+            onSwipeAction={(action, swipeId) => console.log(action, swipeId)}
+          />
+        )}
+        {currentView === 'profile' && (
+          <ProfileView 
+            user={currentUser}
+            onLogout={handleLogout}
+          />
+        )}
       </div>
 
       {/* Bottom Navigation */}
-      <BottomNav currentView={currentView} onNavigate={handleNavigate} />
+      <BottomNav 
+        currentView={currentView} 
+        onNavigate={handleNavigate}
+        inboxCount={incomingSwipes.length}
+      />
     </div>
   );
 };
