@@ -1,11 +1,27 @@
 import React, { useState } from 'react';
 import MatchingOption from '../components/matching/MatchingOption';
-import { VALIDITY_OPTIONS } from '../utils/constants';
+import { VALIDITY_OPTIONS, getAllDiningHalls } from '../utils/constants';
 import './TransferView.css';
 
 export const TransferView = ({ onTransfer = null }) => {
   const [selectedCount, setSelectedCount] = useState(1);
   const [selectedValidity, setSelectedValidity] = useState(VALIDITY_OPTIONS.TODAY.value);
+  const [selectedHalls, setSelectedHalls] = useState(['any']);
+  const diningHalls = getAllDiningHalls();
+
+  const handleHallToggle = (hall) => {
+    if (hall === 'any') {
+      setSelectedHalls(['any']);
+    } else {
+      setSelectedHalls(prev => {
+        const filtered = prev.filter(h => h !== 'any');
+        if (filtered.includes(hall)) {
+          return filtered.filter(h => h !== hall);
+        }
+        return [...filtered, hall];
+      });
+    }
+  };
 
   const handleAIMatch = () => {
     console.log('AI Matching initiated');
@@ -70,11 +86,23 @@ export const TransferView = ({ onTransfer = null }) => {
             <label className="checkbox-option">
               <input 
                 type="checkbox" 
-                defaultChecked 
+                checked={selectedHalls.includes('any')}
+                onChange={() => handleHallToggle('any')}
                 className="checkbox-input" 
               />
               <span className="checkbox-label">Any dining hall</span>
             </label>
+            {diningHalls.map(hall => (
+              <label key={hall} className="checkbox-option">
+                <input 
+                  type="checkbox" 
+                  checked={selectedHalls.includes(hall)}
+                  onChange={() => handleHallToggle(hall)}
+                  className="checkbox-input" 
+                />
+                <span className="checkbox-label">{hall}</span>
+              </label>
+            ))}
           </div>
         </div>
 
