@@ -52,6 +52,7 @@ SwipeShare creates a virtual swipe transfer system where:
 ### 4. Profile Page
 - Displays user info, rating score, badges & achievements
 - Helps donors and recipients understand trustworthiness
+<img width="494" height="678" alt="Screenshot 2025-11-15 at 5 53 39 PM" src="https://github.com/user-attachments/assets/8fc848aa-7d3a-43dc-88e8-670389e97714" />
 
 ### 5. Impact Tracking
 - Monitor total meal swipes shared and students helped
@@ -63,6 +64,7 @@ SwipeShare creates a virtual swipe transfer system where:
 - Shows incoming meal swipes (inbox)
 - Recent activity feed
 - Quick actions for transfers and inbox management
+<img width="490" height="537" alt="Screenshot 2025-11-15 at 5 53 17 PM" src="https://github.com/user-attachments/assets/09a6d1a7-87dc-4ddf-a826-627cc72b2251" />
 
 ---
 
