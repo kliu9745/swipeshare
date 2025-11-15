@@ -53,7 +53,7 @@
 // export default SwipeShareApp;
 
 import React, { useState, useEffect } from 'react';
-import { initializeTestData, runAllTests, mockMySwipes, mockIncomingSwipes } from './data/testdata'; // Fixed import
+import { initializeTestData, runAllTests, mockMySwipes, mockIncomingSwipes, mockUsers } from './data/testdata'; // Fixed import
 import Header from './components/layout/Header';
 import BottomNav from './components/layout/BottomNav';
 import HomeView from './views/HomeView';
@@ -66,10 +66,11 @@ import './App.css';
 
 const SwipeShareApp = () => {
   const [currentView, setCurrentView] = useState('home');
+  const [incomingSwipes, setIncomingSwipes] = useState([...mockIncomingSwipes]); // Make mutable
 
   // Frontend mock data (replace with API calls in production)
   const mySwipes = mockMySwipes;
-  const incomingSwipes = mockIncomingSwipes;
+  const currentUser = mockUsers.currentUser;
 
   const handleNavigate = (view) => setCurrentView(view);
   const handleProfileClick = () => setCurrentView('profile');
@@ -101,7 +102,12 @@ const SwipeShareApp = () => {
       {/* Main Content */}
       <div className="app-content">
         {currentView === 'home' && <HomeView onNavigate={handleNavigate} mySwipes={mySwipes} />}
-        {currentView === 'transfer' && <TransferView onTransfer={null} />}
+        {currentView === 'transfer' && <TransferView onTransfer={null} currentUser={currentUser} onMatchSelected={(match) => {
+          // Add match to incoming swipes
+          setIncomingSwipes(prev => [...prev, match]);
+          // Navigate to inbox
+          setCurrentView('inbox');
+        }} />}
         {currentView === 'inbox' && <InboxView incomingSwipes={incomingSwipes} />}
         {currentView === 'myswipes' && <MySwipesView mySwipes={mySwipes} />}
         {currentView === 'profile' && <ProfileView onLogout={handleLogout} />}
