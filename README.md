@@ -46,8 +46,7 @@ SwipeShare creates a virtual swipe transfer system where:
 - Clean, modern interface
 - Full-screen QR code display
 - Real-time transfer notifications
-  
-<img width="576" height="282" alt="Screenshot 2025-11-15 at 5 50 11 PM" src="https://github.com/user-attachments/assets/96f3767e-50dd-4b21-ba1c-b8c5138a24be" />
+
 
 ### 4. Profile Page
 - Displays user info, rating score, badges & achievements
@@ -58,6 +57,11 @@ SwipeShare creates a virtual swipe transfer system where:
 - Monitor total meal swipes shared and students helped
 - Community impact dashboard
 - Completion rate and reputation tracking
+
+<img width="250" height="559" alt="Screenshot 2025-11-15 at 5 53 01 PM" src="https://github.com/user-attachments/assets/36dd3859-d8dc-4491-97cf-248e3f773565" />
+<img width="576" height="282" alt="Screenshot 2025-11-15 at 5 50 11 PM" src="https://github.com/user-attachments/assets/96f3767e-50dd-4b21-ba1c-b8c5138a24be" />
+<img width="494" height="613" alt="Screenshot 2025-11-15 at 5 53 30 PM" src="https://github.com/user-attachments/assets/41f455ef-a189-451c-9de2-162a0d8f13ff" />
+
 
 ### 6. Home Page
 - Displays total swipes sent
